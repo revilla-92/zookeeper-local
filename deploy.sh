@@ -94,28 +94,28 @@ fi
 mkdir $WORKING_DIRECTORY/dbs
 
 # Si existe el repo, hacer pull; si no, clonar.
-if [ -d "$WORKING_DIRECTORY/zookeeper" ]; then
-	cd $WORKING_DIRECTORY/zookeeper && git pull
+if [ -d "$WORKING_DIRECTORY/zookeeper_local" ]; then
+	cd $WORKING_DIRECTORY/zookeeper_local && git pull
 else
-	cd $WORKING_DIRECTORY && git clone https://github.com/revilla-92/zookeeper.git
+	cd $WORKING_DIRECTORY && git clone https://github.com/revilla-92/zookeeper_local.git
 fi
 
 # Mover al directorio de trabajo.
 cd $WORKING_DIRECTORY
 
 # Extraer tar.gz en el directorio zookeeper.
-cp ./zookeeper/zk/zookeeper-3.4.10.tar.gz .
+cp ./zookeeper_local/zk/zookeeper-3.4.10.tar.gz .
 tar -zxvf zookeeper-3.4.10.tar.gz
 rm zookeeper-3.4.10.tar.gz
 
 # Copiar librerías al directorio de trabajo.
-cp -r ./zookeeper/lib .
+cp -r ./zookeeper_local/lib .
 
 # Copiar JAR al directorio de trabajo.
-cp ./zookeeper/pfinal.jar .
+cp ./zookeeper_local/pfinal.jar .
 
 # Copiar configuración al directorio de configuración de Zookeeper.
-cp -r ./zookeeper/conf/* ./zookeeper-3.4.10/conf
+cp -r ./zookeeper_local/conf/* ./zookeeper-3.4.10/conf
 
 # Modificar directorio de datos en archivos de configuración mediante sed.
 find . -wholename ./zookeeper-3.4.10/conf/localhost_zoo1.cfg -type f -exec sed -i s#"WORKING_DIRECTORY"#"$WORKING_DIRECTORY"#g {} +
