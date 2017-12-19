@@ -1,0 +1,14 @@
+package es.upm.dit.cnvr.pfinal;
+
+public enum OperationEnum {
+	CREATE_BOTH,
+	CREATE_CLIENT,
+	CREATE_ACCOUNT,
+	READ_CLIENT,
+	READ_ACCOUNT,
+	UPDATE_CLIENT,
+	UPDATE_ACCOUNT,
+	DELETE_CLIENT,
+	DELETE_ACCOUNT,
+	CREATE_BANK
+}
